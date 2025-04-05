@@ -1,0 +1,47 @@
+@import "tailwindcss/preflight";
+@import "tailwindcss/utilities";
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220; /* Fallback start color */
+  --background-end-rgb: 255, 255, 255; /* Fallback end color */
+
+  /* Define gradient colors */
+  --gradient-start: rgba(10, 10, 10, 0.9); /* Almost opaque dark gray/black */
+  --gradient-end: rgba(138, 43, 226, 0.8); /* Semi-transparent purple (BlueViolet) */
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0; /* Dark fallback start */
+    --background-end-rgb: 0, 0, 0; /* Dark fallback end */
+
+    /* Dark mode gradient colors */
+    --gradient-start: rgba(18, 18, 18, 0.95); /* Darker, almost opaque black */
+    --gradient-end: rgba(104, 34, 139, 0.85); /* Darker semi-transparent purple (DarkOrchid variant) */
+  }
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  /* Apply the linear gradient */
+  background: linear-gradient(
+      to bottom,
+      var(--gradient-start),
+      var(--gradient-end)
+    ),
+    /* Fallback solid background (less visible but good practice) */
+    linear-gradient(
+      to bottom,
+      rgb(var(--background-start-rgb)),
+      rgb(var(--background-end-rgb))
+    );
+  min-height: 100vh; /* Ensure gradient covers full height */
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
